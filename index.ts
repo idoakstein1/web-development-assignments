@@ -1,8 +1,8 @@
 import bodyParser from 'body-parser';
 import { config } from 'dotenv';
-import Express, { Response, Request, NextFunction } from 'express';
-import { initDBConnection } from './src/services';
+import Express, { NextFunction, Request, Response } from 'express';
 import { postRouter } from './src/routers';
+import { initDBConnection } from './src/services';
 
 config();
 
@@ -15,7 +15,7 @@ const main = async () => {
     app.use(bodyParser.json());
     app.use('/posts', postRouter);
 
-    app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+    app.use((_err: Error, _req: Request, res: Response, _next: NextFunction) => {
         res.status(500).send({ message: 'Error' });
     });
 
