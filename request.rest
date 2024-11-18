@@ -16,3 +16,12 @@ Content-Type: application/json
 GET http://localhost:8080/posts/673b418c7a4c7c28093f2633
 
 ###
+
+PUT http://localhost:8080/posts/673b418c7a4c7c28093f2633
+Content-Type: application/json
+
+{
+"title": "HelloOOOOOOOOOO", "sender": "GUY ATTIAS", "content": "GUY IS THE KING"
+}
+
+###
