@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import { config } from 'dotenv';
-import Express from 'express';
+import Express, { NextFunction, Request, Response } from 'express';
 import { postRouter } from './src/routers';
 import { initDBConnection } from './src/services';
 
@@ -14,6 +14,10 @@ const main = async () => {
 
     app.use(bodyParser.json());
     app.use('/posts', postRouter);
+
+    app.use((_err: Error, _req: Request, res: Response, _next: NextFunction) => {
+        res.status(500).send({ message: 'Error' });
+    });
 
     app.listen(port, () => {
         console.log(`listening on port ${port}`);
