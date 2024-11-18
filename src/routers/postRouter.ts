@@ -37,10 +37,6 @@ postRouter.get('/:id', async (req, res) => {
 
 postRouter.put('/:id', async (req, res) => {
     const id = req.params.id;
-    if (!id) {
-        res.status(400).send({ message: 'query param is missing (id)' });
-        return;
-    }
     if (!isValidObjectId(id)) {
         res.status(400).send({ message: `id ${id} is not valid` });
         return;
