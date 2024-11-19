@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { createPost, editPost, getAllPosts } from '../dal';
 import { isValidObjectId } from 'mongoose';
+import { createPost, editPost, getAllPosts, getPostById } from '../dal';
 
 export const postRouter = Router();
 
@@ -18,12 +18,25 @@ postRouter.post('/', async (req, res) => {
     res.status(200).send(post);
 });
 
-postRouter.put('/:id', async (req, res) => {
-    const id = req.params.id;
-    if (!id) {
-        res.status(400).send({ message: 'query param is missing (id)' });
+postRouter.get('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    if (!isValidObjectId(id)) {
+        res.status(400).send({ message: `id: ${id} is not valid` });
         return;
     }
+
+    const post = await getPostById(id);
+    if (!post) {
+        res.status(404).send({ message: `didn't find post with id: ${id}` });
+        return;
+    }
+
+    res.status(200).send(post);
+});
+
+postRouter.put('/:id', async (req, res) => {
+    const id = req.params.id;
     if (!isValidObjectId(id)) {
         res.status(400).send({ message: `id ${id} is not valid` });
         return;
