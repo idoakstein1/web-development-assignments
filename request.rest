@@ -25,3 +25,8 @@ Content-Type: application/json
 }
 
 ###
+###
+
+DELETE  http://localhost:8080/comments/673ca8547843cfb55725c80f
+
+###
