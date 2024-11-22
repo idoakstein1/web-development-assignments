@@ -1,13 +1,16 @@
 ###
 
+# get all posts
 GET http://localhost:8080/posts
 
 ###
 
+# get posts by sender
 GET http://localhost:8080/posts?sender=Kevin
 
 ###
 
+# create post
 POST http://localhost:8080/posts 
 Content-Type: application/json
 
@@ -17,10 +20,12 @@ Content-Type: application/json
 
 ###
 
+# get post by id
 GET http://localhost:8080/posts/673b418c7a4c7c28093f2633
 
 ###
 
+# update post
 PUT http://localhost:8080/posts/673b418c7a4c7c28093f2633
 Content-Type: application/json
 
@@ -29,17 +34,18 @@ Content-Type: application/json
 }
 
 ###
-###
 
+# delete comment
 DELETE  http://localhost:8080/comments/673ca8547843cfb55725c80f
 
 ###
+
+# get comments by post
+GET   http://localhost:8080/comments/post/673b418c7a4c7c28093f2633
+
 ###
 
-GET   http://localhost:8080/comments/post/673b4a759b20405bc6f847b2
-
-###
-
+# create comment
 POST http://localhost:8080/comments 
 Content-Type: application/json
 
@@ -49,6 +55,17 @@ Content-Type: application/json
 
 ###
 
+# update comment
+PUT http://localhost:8080/comments/674067d4a1718b4a54d307b8
+Content-Type: application/json
+
+{
+ "sender": "IDO", "content": "IDO IS THE GOAT"
+}
+
+###
+
+# get comment by id
 GET   http://localhost:8080/comments/674069829f3ed9c93edb75b0
 
 ###
