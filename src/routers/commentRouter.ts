@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { deleteComment } from '../dal';
 import { isValidObjectId } from 'mongoose';
+import { createComment, deleteComment, getPostById } from '../dal';
 
 export const commentRouter = Router();
 
@@ -12,4 +12,23 @@ commentRouter.delete('/:id', async (req, res) => {
     }
     const deletedComment = await deleteComment(id);
     res.status(200).send({ deletedComment });
+});
+
+commentRouter.post('/', async (req, res) => {
+    const { sender, content, postID } = req.body;
+    if (!sender || !postID) {
+        res.status(400).send({ message: 'body param is missing (sender or postID)' });
+        return;
+    }
+    if (!isValidObjectId(postID)) {
+        res.status(400).send({ message: `invalid postID: ${postID}` });
+        return;
+    }
+    if ((await getPostById(postID)) === null) {
+        res.status(400).send({ message: `post with id: ${postID} doesn't exists` });
+        return;
+    }
+
+    const post = await createComment({ sender, content, postID });
+    res.status(200).send(post);
 });
