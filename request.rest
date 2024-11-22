@@ -46,3 +46,9 @@ Content-Type: application/json
 {
 "postID": "673b418c7a4c7c28093f2633", "sender": "Kevin", "content": "Hello World..."
 }
+
+###
+
+GET   http://localhost:8080/comments/674069829f3ed9c93edb75b0
+
+###
