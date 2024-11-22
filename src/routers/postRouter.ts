@@ -5,7 +5,7 @@ import { createPost, editPost, getAllPosts, getPostById } from '../dal';
 export const postRouter = Router();
 
 postRouter.get('/', async (req: Request<{}, {}, {}, Record<string, string | undefined>>, res) => {
-    res.status(200).send(await getAllPosts(req.query));
+    res.status(200).send({ posts: await getAllPosts(req.query) });
 });
 
 postRouter.post('/', async (req, res) => {
@@ -32,7 +32,7 @@ postRouter.get('/:id', async (req, res) => {
         return;
     }
 
-    res.status(200).send(post);
+    res.status(200).send({ post });
 });
 
 postRouter.put('/:id', async (req, res) => {
