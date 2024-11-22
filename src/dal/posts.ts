@@ -8,13 +8,13 @@ export const getAllPosts = async (query: Record<string, string | undefined>) => 
         filters.sender = query.sender;
     }
 
-    return await postModel.find(filters);
+    return await postModel.find(filters).select('-__v');
 };
 
 export const createPost = async (title: string, sender: string, content?: string) =>
     await postModel.create({ title, sender, content });
 
-export const getPostById = async (id: string) => await postModel.findById(id);
+export const getPostById = async (id: string) => await postModel.findById(id).select('-__v');
 
 export const editPost = async (id: string, title: string, sender: string, content?: string) =>
     await postModel.updateOne({ _id: id }, { title, sender, content });
