@@ -36,7 +36,7 @@ DELETE  http://localhost:8080/comments/673ca8547843cfb55725c80f
 ###
 ###
 
-GET   http://localhost:8080/comments/673b4a759b20405bc6f847b2
+GET   http://localhost:8080/comments/post/673b4a759b20405bc6f847b2
 
 ###
 

@@ -14,7 +14,7 @@ commentRouter.delete('/:id', async (req, res) => {
     res.status(200).send({ deletedComment });
 });
 
-commentRouter.get('/:postID', async (req, res) => {
+commentRouter.get('/post/:postID', async (req, res) => {
     const postID = req.params.postID;
     if (!isValidObjectId(postID)) {
         res.status(400).send({ message: `Post id ${postID} is not valid` });
