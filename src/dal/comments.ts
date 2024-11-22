@@ -5,3 +5,5 @@ export const deleteComment = async (commentId: string) => await commentModel.del
 export const getCommentsByPostID = async (postID: string) => await commentModel.find({ postID }).select('-__v');
 
 export const createComment = async (comment: Comment) => await commentModel.create(comment);
+
+export const getCommentByID = async (_id: string) => await commentModel.findOne({ _id }).select('-__v');
