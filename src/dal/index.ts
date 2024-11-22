@@ -1,2 +1,2 @@
-export { createComment, deleteComment, editComment, getCommentsByPostID } from './comments';
+export { createComment, deleteComment, editComment, getCommentByID, getCommentsByPostID } from './comments';
 export { createPost, editPost, getAllPosts, getPostById } from './posts';

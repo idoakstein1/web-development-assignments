@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { isValidObjectId } from 'mongoose';
-import { createComment, deleteComment, editComment, getCommentsByPostID, getPostById } from '../dal';
+import { createComment, deleteComment, editComment, getCommentByID, getCommentsByPostID, getPostById } from '../dal';
 
 export const commentRouter = Router();
 
@@ -56,4 +56,16 @@ commentRouter.put('/:id', async (req, res) => {
     await editComment(body, id);
 
     res.status(200).send({ message: 'update succeeded' });
+});
+
+commentRouter.get('/:id', async (req, res) => {
+    const commentID = req.params.id;
+    if (!isValidObjectId(commentID)) {
+        res.status(400).send({ message: `Comment id ${commentID} is not valid` });
+        return;
+    }
+
+    const comment = await getCommentByID(commentID);
+
+    res.status(200).send({ comment });
 });

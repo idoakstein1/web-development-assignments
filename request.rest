@@ -54,3 +54,8 @@ Content-Type: application/json
  "sender": "IDO", "content": "IDO IS THE GOAT"
 }
 
+###
+
+GET   http://localhost:8080/comments/674069829f3ed9c93edb75b0
+
+###
