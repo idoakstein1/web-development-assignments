@@ -29,6 +29,6 @@ commentRouter.post('/', async (req, res) => {
         return;
     }
 
-    const post = await createComment({ sender, content, postID });
-    res.status(200).send(post);
+    const comment = await createComment({ sender, content, postID });
+    res.status(200).send(comment);
 });
