@@ -39,3 +39,10 @@ DELETE  http://localhost:8080/comments/673ca8547843cfb55725c80f
 GET   http://localhost:8080/comments/673b4a759b20405bc6f847b2
 
 ###
+
+POST http://localhost:8080/comments 
+Content-Type: application/json
+
+{
+"postID": "673b418c7a4c7c28093f2633", "sender": "Kevin", "content": "Hello World..."
+}
