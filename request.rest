@@ -4,6 +4,10 @@ GET http://localhost:8080/posts
 
 ###
 
+GET http://localhost:8080/posts?sender=Kevin
+
+###
+
 POST http://localhost:8080/posts 
 Content-Type: application/json
 

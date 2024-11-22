@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Request, Router } from 'express';
 import { isValidObjectId } from 'mongoose';
 import { createPost, editPost, getAllPosts, getPostById } from '../dal';
 
 export const postRouter = Router();
 
-postRouter.get('/', async (_req, res) => {
-    res.status(200).send(await getAllPosts());
+postRouter.get('/', async (req: Request<{}, {}, {}, Record<string, string | undefined>>, res) => {
+    res.status(200).send(await getAllPosts(req.query));
 });
 
 postRouter.post('/', async (req, res) => {

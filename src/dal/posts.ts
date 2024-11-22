@@ -1,6 +1,15 @@
-import { postModel } from '../models';
+import { FilterQuery } from 'mongoose';
+import { Post, postModel } from '../models';
 
-export const getAllPosts = async () => await postModel.find();
+export const getAllPosts = async (query: Record<string, string | undefined>) => {
+    const filters: FilterQuery<Post> = {};
+
+    if ('sender' in query) {
+        filters.sender = query.sender;
+    }
+
+    return await postModel.find(filters);
+};
 
 export const createPost = async (title: string, sender: string, content?: string) =>
     await postModel.create({ title, sender, content });
